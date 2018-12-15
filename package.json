@@ -4,15 +4,17 @@
   "description": "A meal preparation app that stores recipes and builds shopping lists",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "set NODE_ENV=test && jasmine",
+    "start": "node src/server.js"
   },
   "author": "Luke Strama",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "jasmine": "^3.3.1"
+    "jasmine": "^3.3.1",
+    "request": "^2.88.0"
   }
 }
