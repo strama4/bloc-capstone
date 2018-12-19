@@ -2,11 +2,14 @@ const http = require('http');
 const express = require('express');
 const app = express();
 
+const mainConfig = require('./config/main-config');
 
 const server = http.createServer(app);
 
+mainConfig.init(app, express);
+
 app.get('/', (req, res) => {
-    res.send('Hello world!');
+    res.render('static/landing')
 });
 
 server.listen(3000, () => {

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ./partials/head.ejs %>
+    </head>
+    <body>
+        <main class="container">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <h1 class="display-4 text-center font-weight-bold">FastFuel Meal Prep</h1>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        Create your shopping list in seconds to take the hassle 
+                                        out of meal prepping!
+                                    </li>
+                                    <li class="list-group-item">
+                                        Build your meal plan quickly with presaved recipes based on how much you
+                                        and your family needs for each meal!
+                                    </li>
+                                    <li class="list-group-item">
+                                        First 10 saved recipes are free!
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/images/fruit-veggies.jpg" class="img-fluid"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/shopping-list-preview.png" class="img-fluid"/>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="/login" method="post">
+                            <div class="form-group">
+                                <label for="email">Email: </label>
+                                <input class="form-control" name="email" type="email" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                    <label for="password">Password: </label>
+                                    <input class="form-control" name="password" type="password" placeholder="Enter password"> 
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                        <hr>
+                        <p>Not a registered user?</p>
+                        <button type="button" class="btn btn-primary btn-block">Sign Up!</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <% include ./partials/baseScripts.ejs %>
+    </body>
+</html> 
