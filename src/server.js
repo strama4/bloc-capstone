@@ -15,14 +15,7 @@ function normalizePort(val) {
     return false;
 }
 
-
 const server = http.createServer(app);
-
-
-
-app.get('/', (req, res) => {
-    res.render('static/landing')
-});
 
 server.listen(port, () => {
     console.log('Server is listening on port 3000');
