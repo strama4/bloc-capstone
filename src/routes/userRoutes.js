@@ -6,5 +6,7 @@ const validations = require('../routes/validations');
 
 router.get('/user/signup', userController.signUp);
 router.post('/user/signup', validations.createUser, userController.createUser);
+router.post('/user/signin', userController.signInUser);
+router.get('/user/signin', userController.signIn);
 
 module.exports = router;
