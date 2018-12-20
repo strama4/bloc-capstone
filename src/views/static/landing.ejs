@@ -3,24 +3,23 @@
     <head>
         <% include ./partials/head.ejs %>
     </head>
-    <body>
-        <main class="container">
-            <div class="jumbotron">
+    <body style="background-color: #929090">
+        <main class="container" style="background-color: #585757">
+                    <% include ./partials/navBar.ejs %>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <h1 class="display-4 text-center font-weight-bold">FastFuel Meal Prep</h1>
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
+                                    <li class="list-group-item lead">
                                         Create your shopping list in seconds to take the hassle 
                                         out of meal prepping!
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item lead">
                                         Build your meal plan quickly with presaved recipes based on how much you
                                         and your family needs for each meal!
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item lead">
                                         First 10 saved recipes are free!
                                     </li>
                                 </ul>
@@ -32,28 +31,30 @@
                         <img src="/images/fruit-veggies.jpg" class="img-fluid"/>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-md-6">
                         <img src="images/shopping-list-preview.PNG" class="img-fluid"/>
                     </div>
-                    <div class="col-md-6">
-                        <form action="/user/signin" method="post">
-                            <div class="form-group">
-                                <label for="email">Email: </label>
-                                <input class="form-control" name="email" type="email" placeholder="Enter email">
-                            </div>
-                            <div class="form-group">
-                                    <label for="password">Password: </label>
-                                    <input class="form-control" name="password" type="password" placeholder="Enter password"> 
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </form>
-                        <hr>
-                        <p>Not a registered user?</p>
-                        <a href="/user/signup" class="btn btn-primary btn-block">Sign Up!</a>
+                    <div class="col-md-6 bg-white">
+                        <div>
+                            <form action="/user/signin" method="post">
+                                <div class="form-group">
+                                    <label for="email">Email: </label>
+                                    <input class="form-control" name="email" type="email" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                        <label for="password">Password: </label>
+                                        <input class="form-control" name="password" type="password" placeholder="Enter password"> 
+                                </div>
+                                <button type="submit" class="btn btn-dark btn-block">Login</button>
+                            </form>
+                            <hr>
+                            <p>Not a registered user?</p>
+                            <a href="/user/signup" class="btn btn-dark btn-block">Sign Up!</a>
+                        </div>
+                        
                     </div>
                 </div>
-            </div>
         </main>
 
         <% include ./partials/baseScripts.ejs %>
