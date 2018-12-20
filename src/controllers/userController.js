@@ -17,8 +17,15 @@ module.exports = {
                 // flash error message of some kind
                 res.redirect('/');
             } else {
-                // flash success message
-                res.redirect(303, '/'); // consider sending them back to where they came from
+                passport.authenticate('local')(req, res, () => {
+                    if (err || !user) {
+                        req.flash('error', 'Oops, something went wrong!');
+                        res.redirect(req.headers.referer);
+                    } else {
+                        req.flash('notice', 'You are signed up and signed in! Happy prepping!');
+                        res.redirect(303, '/'); // consider sending them back to where they came from
+                    }
+                })
             }
         })
     },
