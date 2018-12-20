@@ -1,10 +1,9 @@
-const bcrypt = require('bcryptjs');
+const authHelper = require('../auth/authHelper');
 const User = require('./models').User;
 
 module.exports = {
     create(newUser, callback) {
-        const salt = bcrypt.genSaltSync();
-        const hashedPassword = bcrypt.hashSync(newUser.password, salt);
+        const hashedPassword = authHelper.hashPassword(newUser.password);
 
         User.create({
             email: newUser.email,

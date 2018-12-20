@@ -5,7 +5,8 @@ const base = 'http://localhost:3000'
 const sequelize = require('../../src/db/models/index').sequelize;
 const User = require('../../src/db/models').User;
 
-describe('Routes : /user', () => {
+describe('Routes : User', () => {
+    this.user;
     beforeEach((done) => {
         sequelize.sync({ force: true }).then(() => {
             done();
@@ -16,7 +17,7 @@ describe('Routes : /user', () => {
         });
     });
 
-    describe('/signup', () => {
+    describe('POST /user/signup', () => {
         it('should register a new User object', (done) => {
             const options = {
                 url: `${base}/user/signup`,
@@ -67,6 +68,47 @@ describe('Routes : /user', () => {
                     console.log(err);
                     done();
                 });
+            });
+        });
+    });
+
+    describe('POST /user/signin', () => {
+        it('should allow the user to continue with valid credentials', (done) => {
+            const signUp = {
+                url: `${base}/user/signup`,
+                form: {
+                    email: 'example@example.com',
+                    password: 'thisisabadpassword',
+                    confirmPassword: 'thisisabadpassword'
+                }
+            }
+            request.post(signUp, (err, res, body) => {
+                const options = {
+                    url: `${base}/user/signin`,
+                    form: {
+                        email: 'example@example.com',
+                        password: 'thisisabadpassword'
+                    }
+                }
+                request.post(options, (err, res, body) => {
+                    expect(res.statusCode).toBe(303);
+                    expect(body).toContain('Signed in as example@example.com');
+                    done();
+                });
+            })
+        });
+
+        it('should not allow someone that is not a user to login', (done) => {
+            const options = {
+                url: `${base}/user/signin`,
+                form: {
+                    email: 'animposter@example.com',
+                    password: 'muahahahaha'
+                }
+            }
+            request.post(options, (err, res, body) => {
+                expect(res.statusCode).toBe(401);
+                done();
             });
         });
     });
