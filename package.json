@@ -2,7 +2,7 @@
   "name": "meal-prep-app",
   "version": "1.0.0",
   "description": "A meal preparation app that stores recipes and builds shopping lists",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "set NODE_ENV=test&& jasmine",
     "start": "node src/server.js"

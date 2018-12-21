@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../static/partials/head.ejs %>
+    </head>
+    <body>
+        <div class="container">
+            <% include ../static/partials/messages.ejs %>
+            <% include ../static/partials/navBar.ejs %>
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-2">
+                    <a href="/recipes/new" class="btn btn-dark">Create New Recipe</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <p>Which recipe(s) would you like to include in your shopping list?</p>
+                    <form action="/recipes/create-list" method="post">
+                        <% if (recipes.length > 0) { %>
+                            <select>
+                                <% recipes.forEach((recipe) => { %> 
+                                    <option value="<%= JSON.stringify(recipe.name) %>"><%= recipe.name %></option>
+                                <% }) %>    
+                            </select> 
+                        <% } else { %> 
+                            <p>You have no recipes saved! Add one by clicking the 'Create New Recipe' button up to!</p>
+                        <% } %>
+                        <button type="submit" class="btn btn-dark">Build new shopping list</button>
+                    </form>
+                    
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            <% include ../static/partials/baseScripts.ejs %>
+        </div>
+
+    </body>
+</html>
