@@ -4,26 +4,26 @@
         <% include ../static/partials/head.ejs %>
     </head>
     <body>
-        <% include ../static/partials/messages.ejs %>
-
-        <main class="container">
-            <% include ../static/partials/navBar.ejs %>
-            <h2>Sign In</h2>
-            <form action="/user/signin" method="post">
-                <div class="form-group">
-                    <label for="email">Email: </label>
-                    <input class="form-control" name="email" type="email" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                        <label for="password">Password: </label>
-                        <input class="form-control" name="password" type="password" placeholder="Enter password"> 
-                </div>
-                <button type="submit" class="btn btn-dark btn-block">Login</button>
-            </form>
-            <hr>
-            <p>Not a registered user?</p>
-            <a href="/user/signup" class="btn btn-dark btn-block">Sign Up!</a>
-        </main>
+    
+    <main class="container">
+    <% include ../static/partials/messages.ejs %>
+    <% include ../static/partials/navBar.ejs %>
+        <h2>Sign In</h2>
+        <form action="/user/signin" method="post">
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input class="form-control" name="email" type="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter password"> 
+            </div>
+            <button type="submit" class="btn btn-dark btn-block">Login</button>
+        </form>
+        <hr>
+        <p>Not a registered user?</p>
+        <a href="/user/signup" class="btn btn-dark btn-block">Sign Up!</a>
+    </main>
 
         <% include ../static/partials/baseScripts.ejs %>
     </body>
