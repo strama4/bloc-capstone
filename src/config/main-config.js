@@ -7,6 +7,7 @@ const validator = require('express-validator');
 const flash = require('express-flash');
 const session = require('express-session');
 const passportConfig = require('./passport-config');
+const formidable = require('express-formidable');
 
 module.exports = {
     init(app, express) {

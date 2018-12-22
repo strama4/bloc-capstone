@@ -4,6 +4,7 @@
         <% include ../static/partials/head.ejs %>
     </head>
     <body>
+            
         <div class="container">
             <% include ../static/partials/messages.ejs %>
             <% include ../static/partials/navBar.ejs %>
@@ -17,25 +18,49 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <p>Which recipe(s) would you like to include in your shopping list?</p>
-                    <form action="/recipes/create-list" method="post">
+                    <form action="/recipes/create-list" method="post" id="recipe-list">
                         <% if (recipes.length > 0) { %>
-                            <select>
-                                <% recipes.forEach((recipe) => { %> 
-                                    <option value="<%= JSON.stringify(recipe.name) %>"><%= recipe.name %></option>
-                                <% }) %>    
-                            </select> 
+                            <div id="recipe-1">
+                                <select name="recipe-1">
+                                    <% recipes.forEach((recipe, index) => { %> 
+                                        <option value="<%= recipe.name %>"><%= recipe.name %></option>
+                                    <% }) %>    
+                                </select>
+                            </div>
+                            <button type="button" id="btn" class="btn btn-dark" onclick=<%= clickHandler %>>Add Another Recipe</button> 
+                            <hr>
+                            <button type="submit" class="btn btn-dark">Build new shopping list</button>
                         <% } else { %> 
-                            <p>You have no recipes saved! Add one by clicking the 'Create New Recipe' button up to!</p>
+                            <p>You have no recipes saved! Add one by clicking the 'Create New Recipe' button on the side!</p>
                         <% } %>
-                        <button type="submit" class="btn btn-dark">Build new shopping list</button>
                     </form>
                     
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2" id="test"></div>
+                
             </div>
-
-            <% include ../static/partials/baseScripts.ejs %>
         </div>
+        <script>
+            let recipes = <%- JSON.stringify(recipes) %>
+            console.log(recipes)
+            let recipeCount = 1;
+            function launch() {
+                recipeCount++;
+                const parentNode = document.getElementById('recipe-1');
+                const recipeDiv = document.createElement('div');
+                const select = document.createElement('select');
+                select.name = 'recipe-'+ recipeCount;
+                function insertAfter(referenceNode, newNode) {
+                    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+                }
+                recipes.forEach((recipe) => {
+                    select.options.add(new Option(recipe.name, recipe.name));
+                }) 
+                recipeDiv.appendChild(select);
+                insertAfter(parentNode, recipeDiv)
+            }
+        </script>
+        <% include ../static/partials/baseScripts.ejs %>
 
     </body>
 </html>
