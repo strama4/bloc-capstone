@@ -27,7 +27,9 @@ module.exports = {
             req.flash('error', 'You must be signed in to do that');
             res.redirect('/user/signin');    
         } else {
-            res.render('recipe/new', {clickHandler: "addIngredientRow()"});
+            res.render('recipe/new', {addIngredient: "addIngredientRow()", 
+                                      validateQty: "validateQty()", 
+                                      deleteIngredient: "deleteIngredientRow()"});
         }
     },
 

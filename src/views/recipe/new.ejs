@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="col-md-2 form-inline">
                                     <label for="ingredient-qty-1">Qty: </label>
-                                    <input class="form-control" name="ingredientQty1" placeholder="Eg. 1" size="1" required>
+                                    <input class="form-control" name="ingredientQty1" placeholder="Eg. 1" size="1" onblur=<%= validateQty %> required>
                                 <div clas="col-6"></div>
                                 </div>
                                 <div class="col-md-2 form-inline">
@@ -37,10 +37,10 @@
                                     <input class="form-control" name="ingredientMeasure1" placeholder="Eg. TBSP" size=5 required>
                                 </div>
                                 <div class="col-md-2 form-inline">
-                                    <button type="button" class="btn" onclick=<%= clickHandler %>>
+                                    <button type="button" class="btn" onclick=<%= addIngredient %>>
                                         <i class="fas fa-plus"></i>
                                     </button>
-                                    <button type="button" class="btn">
+                                    <button type="button" class="btn" onclick=<%= deleteIngredient %>>
                                         <i class="fas fa-minus"></i>
                                     </button>
                                 </div>
@@ -67,8 +67,17 @@
             document.getElementById('ingredients').appendChild(newRow);
         }
 
-        const validateQty = (e) => {
+        const deleteIngredientRow = () => {
+            const ingredients = document.getElementById('ingredients');
+            ingredients.removeChild(ingredients.lastChild);
+        }
+
+        const validateQty = () => {
             // Validate when the user exits the qty box that a value was entered that when parseInt, it works.
+             if (isNaN(event.target.value)) {
+                 alert('Qty must be a valid number');
+                 event.target.value = '';
+             }
         }
     </script>
     </body>
