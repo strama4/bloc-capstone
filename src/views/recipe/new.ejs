@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../static/partials/head.ejs %>
+    </head>
+    <body>
+        <div class="container">
+            <% include ../static/partials/messages.ejs %>
+            <% include ../static/partials/navBar.ejs %>
+            <div>
+                    <h2>Create a new recipe</h2>
+                </div>
+                <form class="form-horizontal" action="/recipes/new" method="post">
+                    <div class="form-group row">
+                      <div class="col-2"></div>
+                      <div class="col-2">
+                        <label for="recipe-title">Recipe Title: </label>
+                      </div>
+                      <div class="col-8">
+                        <input class="form-control" name="recipeTitle" placeholder="Enter recipe title" required>
+                        </div>
+                    </div>
+                    <div id="ingredients">
+                        <div class="form-group row" id="ingredientRow"> <!-- Ingredient row -->
+                            <div class="col-md-1"></div>
+                                <div class="col-md-4 form-inline">
+                                    <label for="ingredient-name-1">Item: </label>  
+                                    <input class="form-control" name="ingredientName1" placeholder="Eg. Green Pepper" required>
+                                </div>
+                                <div class="col-md-2 form-inline">
+                                    <label for="ingredient-qty-1">Qty: </label>
+                                    <input class="form-control" name="ingredientQty1" placeholder="Eg. 1" size="1" required>
+                                <div clas="col-6"></div>
+                                </div>
+                                <div class="col-md-2 form-inline">
+                                    <label for="ingredient-measure-1">Msrmt: </label>
+                                    <input class="form-control" name="ingredientMeasure1" placeholder="Eg. TBSP" size=5 required>
+                                </div>
+                                <div class="col-md-2 form-inline">
+                                    <button type="button" class="btn" onclick=<%= clickHandler %>>
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Recipe</button>  
+                  </div>
+             
+                       
+                      
+                  </form>
+                </div>
+    
+    <script>
+        const addIngredientRow = () => {
+            const ingredientRow = document.getElementById('ingredientRow');
+            const newRow = ingredientRow.cloneNode(true);
+            
+            const inputs = newRow.getElementsByTagName('input');
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = '';
+                inputs[i].placeholder = '';
+            }
+            document.getElementById('ingredients').appendChild(newRow);
+        }
+
+        const validateQty = (e) => {
+            // Validate when the user exits the qty box that a value was entered that when parseInt, it works.
+        }
+    </script>
+    </body>
+</html>

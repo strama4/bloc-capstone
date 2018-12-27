@@ -17,7 +17,7 @@ module.exports = {
         app.use(bodyParser.urlencoded({extended: true}))
         app.use(validator());
         app.use(session({ 
-            cookie: { maxAge: 60000 },
+            cookie: { maxAge: 8.64e+7 },
             secret: 'the secret',
         }));
         app.use(flash());

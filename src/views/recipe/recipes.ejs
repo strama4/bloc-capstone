@@ -42,14 +42,15 @@
         </div>
         <script>
             let recipes = <%- JSON.stringify(recipes) %>
-            console.log(recipes)
             let recipeCount = 1;
+            let parentNodeName = 'recipe-1'
             function launch() {
                 recipeCount++;
-                const parentNode = document.getElementById('recipe-1');
+                const parentNode = document.getElementById(parentNodeName);
                 const recipeDiv = document.createElement('div');
                 const select = document.createElement('select');
                 select.name = 'recipe-'+ recipeCount;
+                recipeDiv.id = 'recipe-'+ recipeCount;
                 function insertAfter(referenceNode, newNode) {
                     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
                 }
@@ -57,7 +58,9 @@
                     select.options.add(new Option(recipe.name, recipe.name));
                 }) 
                 recipeDiv.appendChild(select);
-                insertAfter(parentNode, recipeDiv)
+                insertAfter(parentNode, recipeDiv);
+                parentNodeName = select.name;
+                console.log(typeof parentNodeName)
             }
         </script>
         <% include ../static/partials/baseScripts.ejs %>

@@ -9,12 +9,25 @@ module.exports = {
         const errors = req.validationErrors();    
 
         if (errors) {
-            console.log('erorrs', errors)
             req.flash('error', errors);
             res.redirect(303, req.headers.referer);
         } else {
             return next();
         }
+    },
 
+    addNewRecipe(req, res, next) {
+        if (req.method === "POST") {
+            req.checkBody('recipeTitle', 'The recipe needs to have a title that is at least 5 characters in length.').isLength({min: 5});
+        }
+
+        const errors = req.validationErrors();
+
+        if(errors) {
+            req.flash('error', errors);
+            res.redirect('/recipes/new')
+        } else {
+            return next();
+        }
     }
 }
