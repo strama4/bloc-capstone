@@ -1,4 +1,4 @@
-** FastFuel
+## FastFuel
 
 A meal prep application that let's you add your own recipes and then aggregates all of the
 ingredients into one, easy to use shopping list.
