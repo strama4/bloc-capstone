@@ -19,7 +19,11 @@ module.exports = {
     },
 
     getRecipeFormData(req, res, next) {
-        res.render('recipe/shoppingList', {result: req.body});
+        recipeQueries.compileRecipeIngredients(req.body, req.user.id, (err, recipes) => {
+            res.render('recipe/shoppingList', {result: recipes, handleChange: 'toggleCompleted()'});
+
+        })
+
     },
 
     getNewRecipePage(req, res, next) {

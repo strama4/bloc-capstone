@@ -8,51 +8,55 @@
             <% include ../static/partials/messages.ejs %>
             <% include ../static/partials/navBar.ejs %>
             <div>
-                    <h2>Create a new recipe</h2>
-                </div>
-                <form class="form-horizontal" action="/recipes/new" method="post">
-                    <div class="form-group row">
-                      <div class="col-2"></div>
-                      <div class="col-2">
+                <h2>Create a new recipe</h2>
+            </div>
+            <form class="form-horizontal" action="/recipes/new" method="post">
+                <div class="form-group row">
+                    <div class="col-2"></div>
+                    <div class="col-2">
                         <label for="recipe-title">Recipe Title: </label>
-                      </div>
-                      <div class="col-8">
-                        <input class="form-control" name="recipeTitle" placeholder="Enter recipe title" required>
-                        </div>
                     </div>
-                    <div id="ingredients">
-                        <div class="form-group row" id="ingredientRow"> <!-- Ingredient row -->
-                            <div class="col-md-1"></div>
-                                <div class="col-md-4 form-inline">
-                                    <label for="ingredient-name-1">Item: </label>  
-                                    <input class="form-control" name="ingredientName1" placeholder="Eg. Green Pepper" required>
-                                </div>
-                                <div class="col-md-2 form-inline">
-                                    <label for="ingredient-qty-1">Qty: </label>
-                                    <input class="form-control" name="ingredientQty1" placeholder="Eg. 1" size="1" onblur=<%= validateQty %> required>
-                                <div clas="col-6"></div>
-                                </div>
-                                <div class="col-md-2 form-inline">
+                    <div class="col-8">
+                        <input class="form-control" name="recipeTitle" placeholder="Enter recipe title" required>
+                    </div>
+                </div>
+                <div id="ingredients">
+                    <div class="form-group row" id="ingredientRow"> <!-- Ingredient row -->
+                        <div class="col-md-1"></div>
+                            <div class="col-md-4 form-inline">
+                                <label for="ingredient-name-1">Item: </label>  
+                                <input class="form-control" name="ingredientName1" placeholder="Eg. Green Pepper" required>
+                            </div>
+                            <div class="col-md-2 form-inline">
+                                <label for="ingredient-qty-1">Qty: </label>
+                                <input class="form-control" name="ingredientQty1" placeholder="Eg. 1" size="1" onblur=<%= validateQty %> required>
+                            <div clas="col-6"></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-inline form-group">
                                     <label for="ingredient-measure-1">Msrmt: </label>
-                                    <input class="form-control" name="ingredientMeasure1" placeholder="Eg. TBSP" size=5 required>
-                                </div>
-                                <div class="col-md-2 form-inline">
-                                    <button type="button" class="btn" onclick=<%= addIngredient %>>
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                    <button type="button" class="btn" onclick=<%= deleteIngredient %>>
-                                        <i class="fas fa-minus"></i>
-                                    </button>
+                                    <select class="form-control" name="ingredientMeasure1">
+                                        <option value="TBSP">TBSP</option>
+                                        <option value="cup">cup</option>
+                                        <option value="oz">oz</option>
+                                        <option value="count">count</option>
+                                    </select>
                                 </div>
                             </div>
+                            <div class="col-md-2 form-inline">
+                                <button type="button" class="btn" onclick=<%= addIngredient %>>
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button type="button" class="btn" onclick=<%= deleteIngredient %>>
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Recipe</button>  
-                  </div>
-             
-                       
-                      
-                  </form>
-                </div>
+                <button type="submit" class="btn btn-primary">Add Recipe</button>  
+                </div>                      
+            </form>
+        </div>
     
     <script>
         const addIngredientRow = () => {
