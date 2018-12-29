@@ -43,9 +43,9 @@ describe('Routes : Recipes', () => {
             Recipe.create({
                 name: 'PB & J Sammy',
                 ingredients: [
-                    {name: 'Peanut Butter'},
-                    {name: 'Jam'},
-                    {name: 'Bread'}
+                    {item: 'Peanut Butter', qty: '1', measurement: 'TBSP'},
+                    {item: 'Jam', qty: '1', measurement: 'TBSP'},
+                    {item: 'Bread', qty: '2', measurement: 'count'}
                 ],
                 userId: this.user.id
             })
@@ -80,16 +80,28 @@ describe('Routes : Recipes', () => {
 
     describe('POST /recipes/create-list', () => {
         it('should return the recipe selected', (done) => {
-            const options = {
-                url: `${base}/create-list`,
-                form: {
-                    'recipe-1': 'PB & J Sammy'
+            Recipe.create({
+                name: 'PB & J Sammy',
+                ingredients: [
+                    {item: 'Peanut Butter', qty: '1', measurement: 'TBSP'},
+                    {item: 'Jam', qty: '1', measurement: 'TBSP'},
+                    {item: 'Bread', qty: '2', measurement: 'count'}
+                ],
+                userId: this.user.id
+            })
+            .then((recipe) => {
+                const options = {
+                    url: `${base}/create-list`,
+                    form: {
+                        'recipe-1': 'PB & J Sammy'
+                    }
                 }
-            }
-            request.post(options, (err, res, body) => {
-                expect(body).toContain('Peanut Butter');
-                done();
-            });
+                request.post(options, (err, res, body) => {
+                    console.log('BODY WAS: ', body)
+                    expect(body).toContain('Peanut Butter');
+                    done();
+                });
+            })
         })
     });
 });

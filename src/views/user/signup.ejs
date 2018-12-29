@@ -4,11 +4,11 @@
         <% include ../static/partials/head.ejs %>
     </head>
     <body>
-        <div class="container">
+    <% include ../static/partials/navBar.ejs %>
+        <div class="container-fluid">
            <% include ../static/partials/messages.ejs %>
-           <% include ../static/partials/navBar.ejs %>
                 <form action="/user/signup" method="post">
-                    <h2>Sign Up</h2>
+                    <h2 class="margin-bottom-large">Sign Up</h2>
                     <div class="form-group">
                         <label for="email">Email: </label>
                         <input class="form-control" name="email" type="email" placeholder="Enter email">

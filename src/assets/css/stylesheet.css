@@ -1,29 +1,87 @@
 html {
+    background-color: #0F0A0A;
     font-size: 10px;
 }
 
 body {
     font-size: 2rem;
-    margin-top: 20px;
+    padding: 0rem;
+    margin: 2rem;
+    background-color: #F5EFED;
+
 }
 
-h1, .display-4 {
+h1 {
     font-size: 5rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 2.8rem;
 }
 
 button, .btn {
     font-size: 1.6rem;
 }
 
-.lead {
-    font-size: 2.2rem;
-}
-
 .completed {
     text-decoration: line-through;
-    font-size: .5rem
 }
 
+.display-4 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.lead {
+    font-size: 1.8rem;
+}
+
+.login {
+    margin: 2rem;
+}
+
+.margin-top-large {
+    margin-top: 3rem;
+}
+
+
+.margin-bottom-large {
+    margin-bottom: 3rem;
+}
+
+.text-muted {
+    font-size: 1.1rem;
+    padding-left: 0.75rem;
+}
+
+nav {
+    background-color: #BDBF09;
+}
 nav a {
     margin: 1.0rem;
+    color: #F5EFED;
+}
+
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+  }
+
+.col-md-6 {
+    margin: 0rem;
+}
+.container-fluid {
+    margin: auto 0rem;
+    padding: 2rem 2rem 2rem 2rem;
+
+}
+
+.grayscale {
+    filter: grayscale(100%)
 }

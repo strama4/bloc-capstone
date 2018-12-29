@@ -4,37 +4,37 @@
         <% include ../static/partials/head.ejs %>
     </head>
     <body>
-        <div class="container">
+    <% include ../static/partials/navBar.ejs %>
+        <div class="container-fluid">
             <% include ../static/partials/messages.ejs %>
-            <% include ../static/partials/navBar.ejs %>
-            <p class="text-center">You will need the following items for the recipes you selected:</p>
+            <p class="text-center margin-bottom-large">You will need the following items for the recipes you selected:</p>
             <div class="row text-center">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-4">
-                    <h4>Item</h4>
+                <div class="col-sm-2 d-none-xs" ></div>
+                <div class="col-3" >
+                    <h3>Item</h3>
                 </div>
-                <div class="col-sm-2">
-                    <h4>Amount</h4>
+                <div class="col-2" >
+                    <h3>Amount</h3>
                 </div>
-                <div class="col-sm-1">
-                    <h4>Have it?</h4>
+                <div class="d-none d-sm-inline col-sm-2">
+                    <h3 class="d-none-xs">Have it?</h3>
                 </div>
-                <div class="col-sm-3"></div>
+                <div class="col-sm-3 d-none-xs"></div>
             </div>
             <div class="text-center">
                 <% result.forEach((ingredient, index) => { %>
                     <div class="row" data-index=<%= index %>>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-2 d-none-xs"></div>
+                        <div class="col-3">
                             <h4><%= ingredient.item %></h4>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-2">
                             <h4><%= ingredient.qty + ' ' + ingredient.measurement%></h4>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-2">
                             <input type="checkbox" name="ingredient" data-index=<%= index %>>
                         </div>
-                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3 d-none-xs"></div>
                     </div>
                 <% }) %>
             </div>

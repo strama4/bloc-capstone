@@ -44,7 +44,7 @@ module.exports = {
                     return next(err);
                 }
                 req.flash('notice', 'You\'ve successfully signed in!');
-                res.redirect(303, '/');
+                res.redirect('/');
             });
         })(req, res, next);
     },

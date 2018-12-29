@@ -5,31 +5,31 @@
     </head>
     <body>
             
-        <div class="container">
+    <% include ../static/partials/navBar.ejs %>
+        <div class="container-fluid">
             <% include ../static/partials/messages.ejs %>
-            <% include ../static/partials/navBar.ejs %>
             <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
                     <a href="/recipes/new" class="btn btn-dark">Create New Recipe</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <p>Which recipe(s) would you like to include in your shopping list?</p>
+                    <p class="margin-bottom-large">Which recipe(s) would you like to include in your shopping list?</p>
                     <form action="/recipes/create-list" method="post" id="recipe-list">
                         <% if (recipes.length > 0) { %>
                             <div id="recipe-1">
-                                <select name="recipe-1">
+                                <select class="margin-bottom-large" name="recipe-1">
                                     <% recipes.forEach((recipe, index) => { %> 
                                         <option value="<%= recipe.name %>"><%= recipe.name %></option>
                                     <% }) %>    
                                 </select>
                             </div>
-                            <button type="button" id="btn" class="btn btn-dark" onclick=<%= clickHandler %>>Add Another Recipe</button> 
-                            <hr>
-                            <button type="submit" class="btn btn-dark">Build new shopping list</button>
+                            <button type="button" id="btn" class="btn btn-dark margin-bottom-large margin-top-large" onclick=<%= clickHandler %>>Add Another Recipe</button> 
+                            <hr class="margin-bottom-large">
+                            <button type="submit" class="btn btn-dark margin-bottom-large">Build new shopping list</button>
                         <% } else { %> 
                             <p>You have no recipes saved! Add one by clicking the 'Create New Recipe' button on the side!</p>
                         <% } %>
@@ -50,6 +50,7 @@
                 const recipeDiv = document.createElement('div');
                 const select = document.createElement('select');
                 select.name = 'recipe-'+ recipeCount;
+                select.classList.add('margin-bottom-large');
                 recipeDiv.id = 'recipe-'+ recipeCount;
                 function insertAfter(referenceNode, newNode) {
                     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);

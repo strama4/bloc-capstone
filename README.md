@@ -15,4 +15,4 @@ To get this project running on your local machine:
 
 1. Clone the package.
 2. Run `npm install` in your command line terminal at the project root.
-3. Run `npm start` to see the app in action!
+3. Run `npm start` to see the app in action on http://localhost:3000!
