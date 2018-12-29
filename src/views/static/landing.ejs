@@ -35,7 +35,10 @@
                     <div class="col-md-6">
                         <img src="images/shopping-list-preview.PNG" class="img-fluid"/>
                     </div>
-                    <div class="col-md-6 bg-white">
+                    <div class="col-md-6">
+                    <% if (currentUser) { %> 
+                        
+                    <% } else { %> 
                         <div>
                             <form action="/user/signin" method="post">
                                 <div class="form-group">
@@ -52,7 +55,7 @@
                             <p>Not a registered user?</p>
                             <a href="/user/signup" class="btn btn-dark btn-block">Sign Up!</a>
                         </div>
-                        
+                    <% } %>
                     </div>
                 </div>
         </main>

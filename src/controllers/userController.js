@@ -51,5 +51,11 @@ module.exports = {
 
     signIn(req, res, next) {
         res.render('user/signin')
+    },
+
+    signOut(req, res, next) {
+        req.logout();
+        req.flash('notice', 'You\'ve been successfully signed out!');
+        res.redirect('/');
     }
 }

@@ -23,3 +23,7 @@ button, .btn {
     text-decoration: line-through;
     font-size: .5rem
 }
+
+nav a {
+    margin: 1.0rem;
+}

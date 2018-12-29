@@ -2,15 +2,18 @@
     <h1 class="display-4">FastFuel Meal Prep</h1>
     
     <div class="navbar-nav justify-content-end">
-        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         
         
         
         <% if (!currentUser) { %> 
-            <a class="nav-item nav-link" href="/user/signin">Sign In</a>
+            <a class="nav-item nav-link margin-large" href="/user/signin">Sign In</a>
         <% } else { %> 
-            <a class="nav-item nav-link" href="/recipes">Recipes</a>
-            <a class="nav-item nav-link" href="#">Sign Out</a>
+            <a class="nav-item nav-link" href="/recipes">Build Meal Plan</a>
+            <a class="nav-item nav-link" href="/user/signout">Sign Out</a>
         <% } %>
     </div>
+    <% if (currentUser) { %> 
+        <small class="text-muted">Signed in as <%= currentUser.email %></small>
+    <% } %>
 </nav>
